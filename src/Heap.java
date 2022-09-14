@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class MinHeap<T extends Comparable<T> >{
+class MaxHeap<T extends Comparable<T> >{
     HashMap<T,Integer> positionTable=new HashMap<>();
 
     // root is at index 0
     ArrayList<T> memmory;
     private int size;
 
-    public MinHeap(){
+    public MaxHeap(){
         this.memmory =new ArrayList<T>();
         this.size=0;
     }
@@ -40,7 +40,7 @@ class MinHeap<T extends Comparable<T> >{
         positionTable.put(memmory.get(pos1),pos1);
         positionTable.put(memmory.get(pos2),pos2);
     }
-    public void Insert(T item){
+    public void insert(T item){
         memmory.add(item);
         positionTable.put(item,size);
         size++;
@@ -58,12 +58,11 @@ class MinHeap<T extends Comparable<T> >{
         return memmory.get(0);
     }
     private boolean movedown(int pos){
-        boolean leftsmaller = leftChild(pos)<size
-                && (memmory.get(leftChild(pos)).compareTo(memmory.get(pos))<0);
-        boolean rightsmaller = rightChild(pos)<size
-                && (memmory.get(rightChild(pos)).compareTo(memmory.get(pos))<0);
-        return leftsmaller || rightsmaller;
+        boolean leftbigger = leftChild(pos)<size && (memmory.get(leftChild(pos)).compareTo(memmory.get(pos))>0);
+        boolean rightbigger = rightChild(pos)<size && (memmory.get(rightChild(pos)).compareTo(memmory.get(pos))>0);
+        return leftbigger || rightbigger;
     }
+
     public void increasekey(int pos){
         int currentpos=pos;
         while (movedown(currentpos))
