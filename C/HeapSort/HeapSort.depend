@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1664282222 source:c:\users\mathi\onedrive\documents\git\heapsort-raspberrypi\c\heapsort\main.c
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+
