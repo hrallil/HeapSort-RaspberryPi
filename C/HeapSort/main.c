@@ -46,19 +46,21 @@ int main () {
     int num[MAXCHAR];
     int a[s];
     FILE *fpt;
-    fpt = fopen("heapSort4000.csv", "w+"); //
+    fpt = fopen("heapSort4000.csv", "w+"); //make file if not there
 
 
-    int i;
-    printf("Making data file\n ");
-    for ( i = 0; i < s; ++i) {
+
+
+    /*   fill file with 1-s
+    for (int i = 0; i < s; ++i) {
         fprintf(fpt,"%d\n", i);
     }
-
     fclose(fpt);
+    */
+    //file read
     FILE *fr;
     fr = fopen("heapSort4000.csv", "r");
-    for ( i = 0; i < s; ++i) {
+    for (int i = 0; i < s; ++i) {
         fgets(num, MAXCHAR, fr);
         a[i] = atoi(num);
     }
