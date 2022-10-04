@@ -42,11 +42,11 @@ void heapsort (int *a, int n) {
 }
 
 int main () {
-    int s = 1000; // dataset size
+    int s = 4000; // dataset size
     int num[MAXCHAR];
     int a[s];
     FILE *fpt;
-    fpt = fopen("TestData.csv", "w+");
+    fpt = fopen("heapSort4000.csv", "w+"); //
 
 
     int i;
@@ -57,20 +57,26 @@ int main () {
 
     fclose(fpt);
     FILE *fr;
-    fr = fopen("TestData.csv", "r");
+    fr = fopen("heapSort4000.csv", "r");
     for ( i = 0; i < s; ++i) {
         fgets(num, MAXCHAR, fr);
         a[i] = atoi(num);
     }
+
     fclose(fr);
 
     int n = sizeof a / sizeof a[0];
+    /*
     for (i = 0; i < n; i++)
         printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
     printf("\n");
     printf("Sorting...\n");
-    heapsort(a, n);
+    */
+    for(int i = 0; i<10000;i++)
+        heapsort(a, n);
+    /*
     for (i = 0; i < n; i++)
         printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
+        */
     return 0;
 }
