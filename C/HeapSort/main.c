@@ -2,7 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#define MAXCHAR 1000
+
+#define MAXCHAR 100000
 
 int max (int *a, int n, int i, int j, int k) {
     int m = i;
@@ -45,40 +46,40 @@ int main () {
     int s = 4000; // dataset size
     int num[MAXCHAR];
     int a[s];
+    int n = sizeof a / sizeof a[0];
     FILE *fpt;
-    fpt = fopen("heapSort4000.csv", "w+"); //make file if not there
+    FILE *fr;
+
 
 
 
 
     /*   fill file with 1-s
-    for (int i = 0; i < s; ++i) {
+    fpt = fopen("heapSort16000.csv", "w+"); //make file if not there
+    for (int i = 0; i < 16000; ++i) {
         fprintf(fpt,"%d\n", i);
     }
     fclose(fpt);
     */
     //file read
-    FILE *fr;
-    fr = fopen("heapSort4000.csv", "r");
-    for (int i = 0; i < s; ++i) {
-        fgets(num, MAXCHAR, fr);
-        a[i] = atoi(num);
+
+    for(int k = 0; k<7;k++){
+        char filename[32];
+        sprintf(filename,"heapSort%d.csv",s);
+        fr = fopen(filename, "r");
+        for (int i = 0; i < s; ++i) {
+            fgets(num, MAXCHAR, fr);
+            a[i] = atoi(num);
+        }
+
+        for(int j = 0;j<1;j++){
+            fclose(fr);
+            for(int i = 0; i<10000;i++)
+                heapsort(a, n);
+            // printf("spike!\n");
+        }
+        // printf("datachange\n");
+        s+=2000;
     }
-
-    fclose(fr);
-
-    int n = sizeof a / sizeof a[0];
-    /*
-    for (i = 0; i < n; i++)
-        printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
-    printf("\n");
-    printf("Sorting...\n");
-    */
-    for(int i = 0; i<10000;i++)
-        heapsort(a, n);
-    /*
-    for (i = 0; i < n; i++)
-        printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
-        */
     return 0;
 }
