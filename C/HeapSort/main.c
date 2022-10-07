@@ -54,7 +54,7 @@ int main () {
 
 
 
-    /*   fill file with 1-s
+    /*   CSV file with data from 1 to s
     fpt = fopen("heapSort16000.csv", "w+"); //make file if not there
     for (int i = 0; i < 16000; ++i) {
         fprintf(fpt,"%d\n", i);

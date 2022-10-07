@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1665148076 source:c:\users\mathi\onedrive\documents\git\heapsort-raspberrypi\c\bubblesort\main.c
+	<stdio.h>
+	<stdlib.h>
+
