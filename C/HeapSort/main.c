@@ -43,43 +43,27 @@ void heapsort (int *a, int n) {
 }
 
 int main () {
-    int s = 4000; // dataset size
-    int num[MAXCHAR];
-    int a[s];
-    int n = sizeof a / sizeof a[0];
-    FILE *fpt;
-    FILE *fr;
+    int dataSizes[] = {4000,6000,8000,10000,12000,14000};
 
+    for(int i = 0; i < sizeof dataSizes / sizeof dataSizes[0]; i++){
 
-
-
-
-    /*   CSV file with data from 1 to s
-    fpt = fopen("heapSort16000.csv", "w+"); //make file if not there
-    for (int i = 0; i < 16000; ++i) {
-        fprintf(fpt,"%d\n", i);
-    }
-    fclose(fpt);
-    */
-    //file read
-
-    for(int k = 0; k<7;k++){
-        char filename[32];
-        sprintf(filename,"heapSort%d.csv",s);
-        fr = fopen(filename, "r");
-        for (int i = 0; i < s; ++i) {
-            fgets(num, MAXCHAR, fr);
-            a[i] = atoi(num);
+        int a[dataSizes[i]];
+        int n = sizeof a / sizeof a[0];
+        for(int j = 0;j<n; j++){
+            a[j] = j;
         }
 
-        for(int j = 0;j<1;j++){
-            fclose(fr);
-            for(int i = 0; i<10000;i++)
-                heapsort(a, n);
-            // printf("spike!\n");
-        }
-        // printf("datachange\n");
-        s+=2000;
+        int k;
+        printf("unsorted...\n");
+        for (k = 0; k < n; k++)
+            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+
+        printf("sorting...\n");
+        heapsort(a, n);
+
+        for (k = 0; k < n; k++)
+            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+
     }
     return 0;
 }

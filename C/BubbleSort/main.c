@@ -20,48 +20,31 @@ void bubble_sort (int *a, int n) {
 }
 
 int main () {
-
-    int s = 30; // dataset size
-    int num;
-    int a[s];
-    int n = sizeof a / sizeof a[0];
-    FILE *fpt;
-    FILE *fr;
+    int dataSizesSorted[] = {30,90,120,270,570,1080};
+    int dataSizesRev[] = {100,150,250,420,800};
 
 
-    //   CSV file with data from 1 to s
-    char filename[32];
-    sprintf(filename,"revsortBubblSort%d.csv",s);
-    fpt = fopen(filename, "w+"); //make file if not there
-    printf("\n Writing... ");
-    for (int i = s; i > 0; --i) {
-        fprintf(fpt,"%d\n", i);
-        printf("%d ",i);
+
+    for(int i = 0; i < sizeof dataSizesSorted; i++){
+        int a[dataSizesSorted[i]];
+        int n = sizeof a / sizeof a[0];
+
+        for(int j = n-1; j>=0; j--){
+            a[j] = n-j;
+        }
+
+        int k;
+        printf("unsorted...\n");
+        for (k = 0; k < n; k++)
+            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+
+        printf("Fist element is: %d \n",a[0]);
+        printf("sorting...\n");
+        bubble_sort(a, n);
+
+        for (k = 0; k < n; k++)
+            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+
     }
-
-    fclose(fpt);
-
-
-    sprintf(filename,"bubblSort%d.csv",s);
-    fr = fopen(filename, "r");
-    printf("\n Reading... ");
-    for (int i = 0; i < s; ++i) {
-        fgets(num, 100, fr);
-        printf("%d",num);
-        a[i] = atoi(num);
-        printf("%d ",a[i]);
-    }
-    printf("\n");
-
-    int i;
-    for (i = 0; i < n; i++)
-        printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
-
-
-    bubble_sort(a, n);
-
-    for (i = 0; i < n; i++)
-        printf("%d%s", a[i], i == n - 1 ? "\n" : " ");
-
     return 0;
 }
