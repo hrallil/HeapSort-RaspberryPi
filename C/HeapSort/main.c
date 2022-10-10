@@ -45,25 +45,28 @@ void heapsort (int *a, int n) {
 int main () {
     int dataSizes[] = {4000,6000,8000,10000,12000,14000};
 
-    for(int i = 0; i < sizeof dataSizes / sizeof dataSizes[0]; i++){
-
+    for(int i = 0; i < sizeof dataSizes/sizeof dataSizes[0]; i++){
         int a[dataSizes[i]];
         int n = sizeof a / sizeof a[0];
-        for(int j = 0;j<n; j++){
+
+        for(int j = n-1; j>=0; j--){
             a[j] = j;
         }
 
         int k;
-        printf("unsorted...\n");
+        /*printf("unsorted...\n");
         for (k = 0; k < n; k++)
             printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
 
-        printf("sorting...\n");
-        heapsort(a, n);
-
-        for (k = 0; k < n; k++)
-            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
-
+        printf("Fist element is: %d \n",a[0]);
+        printf("sorting...\n");*/
+        for(int spike = 0; spike<10; spike++){
+            for(int rep=0; rep<10000;rep++)
+                heapsort(a, n);
+            //for (k = 0; k < n; k++)
+            //    printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+            sleep(1);
+        }
     }
     return 0;
 }

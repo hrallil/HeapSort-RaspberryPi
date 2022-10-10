@@ -25,26 +25,34 @@ int main () {
 
 
 
-    for(int i = 0; i < sizeof dataSizesSorted; i++){
-        int a[dataSizesSorted[i]];
+    for(int i = 0; i < sizeof dataSizesRev/sizeof dataSizesRev[0]; i++){
+        int a[dataSizesRev[i]];
         int n = sizeof a / sizeof a[0];
 
+
+        /*sorted
         for(int j = n-1; j>=0; j--){
+            a[j] = n-j;
+        }*/
+        //reverse sorted
+        for(int j = 0; j<n; j++){
             a[j] = n-j;
         }
 
-        int k;
-        printf("unsorted...\n");
+
+        /*printf("unsorted...\n");
         for (k = 0; k < n; k++)
             printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
 
         printf("Fist element is: %d \n",a[0]);
-        printf("sorting...\n");
-        bubble_sort(a, n);
-
-        for (k = 0; k < n; k++)
-            printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
-
+        printf("sorting...\n");*/
+        for(int spike = 0; spike<10; spike++){
+            for(int rep=0; rep<10000;rep++)
+                bubble_sort(a, n);
+            //for (k = 0; k < n; k++)
+            //    printf("%d%s", a[k], k == n - 1 ? "\n" : " ");
+            sleep(1);
+        }
     }
     return 0;
 }
